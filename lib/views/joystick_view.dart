@@ -68,6 +68,7 @@ class JoystickView extends StatelessWidget {
       this.backgroundColor = Colors.blueGrey,
       this.innerCircleColor = Colors.blueGrey,
       this.outerCircleBorderColor = Colors.white,
+      this.innerCircleBorderColor = Colors.white,
       this.opacity,
       this.onDirectionChanged,
       this.interval,
@@ -106,6 +107,7 @@ class JoystickView extends StatelessWidget {
                 child: CircleView.joystickInnerCircle(
                   actualSize / 2,
                   innerCircleColor!,
+                  innerCircleBorderColor!
                 ),
               ),
               if (showArrows) ...createArrows(),
