@@ -30,6 +30,8 @@ class JoystickView extends StatelessWidget {
   ///
   /// Defaults to [Colors.blueGrey]
   final Color? innerCircleColor;
+    /// Defaults to [Colors.blueGrey]
+  final Color? outerCircleBorderColor;
 
   /// Opacity of the joystick
   ///
@@ -65,6 +67,7 @@ class JoystickView extends StatelessWidget {
       this.iconsColor = Colors.white54,
       this.backgroundColor = Colors.blueGrey,
       this.innerCircleColor = Colors.blueGrey,
+      this.outerCircleBorderColor = Colors.white,
       this.opacity,
       this.onDirectionChanged,
       this.interval,
@@ -88,7 +91,7 @@ class JoystickView extends StatelessWidget {
     Offset? joystickInnerPosition = _calculatePositionOfInnerCircle(
         lastPosition, innerCircleSize, actualSize, Offset(0, 0));
 
-    DateTime? _callbackTimestamp;
+    DateTime _callbackTimestamp = DateTime.now();
 
     return Center(
       child: StatefulBuilder(
@@ -96,9 +99,7 @@ class JoystickView extends StatelessWidget {
           Widget joystick = Stack(
             children: <Widget>[
               CircleView.joystickCircle(
-                actualSize,
-                backgroundColor!,
-              ),
+                  actualSize, backgroundColor!, outerCircleBorderColor!),
               Positioned(
                 top: joystickInnerPosition!.dy,
                 left: joystickInnerPosition!.dx,
@@ -118,7 +119,7 @@ class JoystickView extends StatelessWidget {
               setState(() => lastPosition = details.localPosition);
             },
             onPanEnd: (details) {
-              _callbackTimestamp = null;
+              //_callbackTimestamp = null;
               if (onDirectionChanged != null) {
                 onDirectionChanged!(0, 0);
               }
