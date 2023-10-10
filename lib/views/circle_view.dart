@@ -69,12 +69,12 @@ class CircleView extends StatelessWidget {
         ],
       );
 
-  factory CircleView.joystickInnerCircle(double size, Color color) =>
+  factory CircleView.joystickInnerCircle(double size, Color color, Color borderColor) =>
       CircleView(
         size: size,
         color: color,
         border: Border.all(
-          color: Colors.black26,
+          color: borderColor,
           width: 2.0,
           style: BorderStyle.solid,
         ),
