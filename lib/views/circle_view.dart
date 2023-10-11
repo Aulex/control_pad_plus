@@ -75,7 +75,7 @@ class CircleView extends StatelessWidget {
         color: color,
         border: Border.all(
           color: borderColor,
-          width: 10.0,
+          width: 11.0,
           style: BorderStyle.solid,
         ),
         boxShadow: const <BoxShadow>[
