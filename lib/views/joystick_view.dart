@@ -30,8 +30,12 @@ class JoystickView extends StatelessWidget {
   ///
   /// Defaults to [Colors.blueGrey]
   final Color? innerCircleColor;
-    /// Defaults to [Colors.blueGrey]
+
+  /// Defaults to [Colors.blueGrey]
   final Color? outerCircleBorderColor;
+  final double? outerCircleBorderWidth;
+  final BorderStyle? outerCircleBorderStyle;
+  final Color? innerCircleBorderColor;
 
   /// Opacity of the joystick
   ///
@@ -68,6 +72,8 @@ class JoystickView extends StatelessWidget {
       this.backgroundColor = Colors.blueGrey,
       this.innerCircleColor = Colors.blueGrey,
       this.outerCircleBorderColor = Colors.white,
+      this.outerCircleBorderWidth = 4.0,
+      this.outerCircleBorderStyle = BorderStyle.solid,
       this.innerCircleBorderColor = Colors.white,
       this.opacity,
       this.onDirectionChanged,
@@ -100,15 +106,16 @@ class JoystickView extends StatelessWidget {
           Widget joystick = Stack(
             children: <Widget>[
               CircleView.joystickCircle(
-                  actualSize, backgroundColor!, outerCircleBorderColor!),
+                  actualSize,
+                  backgroundColor!,
+                  outerCircleBorderColor!,
+                  outerCircleBorderWidth!,
+                  outerCircleBorderStyle!),
               Positioned(
                 top: joystickInnerPosition!.dy,
                 left: joystickInnerPosition!.dx,
                 child: CircleView.joystickInnerCircle(
-                  actualSize / 2,
-                  innerCircleColor!,
-                  innerCircleBorderColor!
-                ),
+                    actualSize / 2, innerCircleColor!, innerCircleBorderColor!),
               ),
               if (showArrows) ...createArrows(),
             ],
