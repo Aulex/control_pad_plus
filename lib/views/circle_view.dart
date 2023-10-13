@@ -12,12 +12,16 @@ class CircleView extends StatelessWidget {
   final Icon? buttonIcon;
   final String? buttonText;
   final Color? borderColor;
+  final double? borderWidth;
+  final BorderStyle? borderStyle;
 
   const CircleView({
     super.key,
     this.size,
     this.color = Colors.transparent,
     this.borderColor = Colors.black87,
+    this.borderWidth = 4.0,
+    this.borderStyle = BorderStyle.solid,
     this.boxShadow,
     this.border,
     this.opacity,
@@ -50,15 +54,16 @@ class CircleView extends StatelessWidget {
     );
   }
 
-  factory CircleView.joystickCircle(
-          double size, Color color, Color borderColor) =>
+  factory CircleView.joystickCircle(double size, Color color, Color borderColor,
+          double borderWidth, BorderStyle borderStyle) =>
       CircleView(
         size: size,
         color: color,
+        //showBorder
         border: Border.all(
           color: borderColor,
-          width: 4.0,
-          style: BorderStyle.solid,
+          width: borderWidth,
+          style: borderStyle,
         ),
         boxShadow: const <BoxShadow>[
           BoxShadow(
@@ -69,13 +74,14 @@ class CircleView extends StatelessWidget {
         ],
       );
 
-  factory CircleView.joystickInnerCircle(double size, Color color, Color borderColor) =>
+  factory CircleView.joystickInnerCircle(
+          double size, Color color, Color borderColor) =>
       CircleView(
         size: size,
         color: color,
         border: Border.all(
           color: borderColor,
-          width: 11.0,
+          width: 2.0,
           style: BorderStyle.solid,
         ),
         boxShadow: const <BoxShadow>[
